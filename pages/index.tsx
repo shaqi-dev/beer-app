@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import axios from 'axios';
 import type { GetStaticProps, GetStaticPropsResult } from 'next';
 import BeerCard from '../components/BeerCard';
+import MainContainer from '../components/MainContainer';
 import type BeerItem from '../models/BeerItem';
 
 interface Props {
@@ -12,8 +13,7 @@ const index: FC<Props> = ({ data }) => {
   const cards = data.map((beer) => <BeerCard beer={beer} />);
 
   return (
-    <div style={{ maxWidth: '1260px', margin: '0 auto' }}>
-      <h1>Beer App</h1>
+    <MainContainer>
       <div style={{
         display: 'flex',
         flexWrap: 'wrap',
@@ -23,7 +23,7 @@ const index: FC<Props> = ({ data }) => {
       >
         {cards}
       </div>
-    </div>
+    </MainContainer>
   );
 };
 

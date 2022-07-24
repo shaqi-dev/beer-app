@@ -23,7 +23,8 @@
   },
   "include": [
     "src",
-    "pages"
+    "pages",
+    "./declaration.d.ts"
   ],
   "exclude": [
     "node_modules"

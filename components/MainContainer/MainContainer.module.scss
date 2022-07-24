@@ -1,0 +1,26 @@
+@use '../../scss/variables' as *;
+ 
+.root {
+  max-width: 1260px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 80px;
+}
+
+.header {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  cursor: pointer;
+  transition: color 100ms;
+
+  &:hover {
+    color: $color-text-hover;
+  }
+}

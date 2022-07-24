@@ -29,6 +29,7 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'react/require-default-props': 'off',
     'react/function-component-definition': [
       2,
       {
