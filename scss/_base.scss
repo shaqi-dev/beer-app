@@ -13,7 +13,8 @@ body {
   font-family: $font-roboto;
   font-size: 1.8rem;
   color: $color-text-primary;
-  background-color: $color-bg-primary;
+  background: $color-bg-primary;
+  background: $gradient-bg-primary;
 }
 
 h1, h2, h2, h4, h5 {

@@ -1,34 +1,28 @@
-import React from 'react';
+import React, { FC } from 'react';
 import axios from 'axios';
 import type { GetStaticProps, GetStaticPropsResult } from 'next';
+import BeerCard from '../components/BeerCard';
 import type BeerItem from '../models/BeerItem';
 
 interface Props {
   data: BeerItem[];
 }
 
-const testStyle = {
-  width: '250px',
-  heigth: '400px',
-};
-
-const index = ({ data }: Props) => {
-  const beerCards = data.map((beer) => (
-    <div key={beer.id} style={testStyle}>
-      <div>
-        <img src={beer.image_url} alt="Beer" />
-      </div>
-      <div>
-        <h2>{beer.name}</h2>
-        <p>{beer.description}</p>
-      </div>
-    </div>
-  ));
+const index: FC<Props> = ({ data }) => {
+  const cards = data.map((beer) => <BeerCard beer={beer} />);
 
   return (
-    <div>
-      <h1>Main page</h1>
-      {beerCards}
+    <div style={{ maxWidth: '1260px', margin: '0 auto' }}>
+      <h1>Beer App</h1>
+      <div style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        gap: '20px',
+      }}
+      >
+        {cards}
+      </div>
     </div>
   );
 };

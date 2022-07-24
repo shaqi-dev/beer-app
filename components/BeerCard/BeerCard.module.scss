@@ -1,0 +1,35 @@
+@use '../../scss/variables' as *;
+
+.root {
+  width: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: $color-bg-accent;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.name {
+  text-align: center;
+}
