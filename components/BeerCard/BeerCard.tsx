@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import type BeerItem from '../../models/BeerItem';
 import s from './BeerCard.module.scss';
 
@@ -13,9 +14,12 @@ const BeerCard: FC<BeerItemProps> = ({ beer }) => (
   <Link href={`/beer/[id]?id=${beer.id}`}>
     <a className={s.root}>
       <div className={s.image}>
-        <img
+        <Image
           src={beer.image_url ?? '/assets/img/no-image-placeholder.jpg'}
           alt="Beer"
+          width={381}
+          height={760}
+          objectFit="contain"
         />
       </div>
       <div className={s.body}>

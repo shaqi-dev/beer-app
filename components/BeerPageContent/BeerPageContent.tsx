@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import Image from 'next/image';
 import BeerItem from '../../models/BeerItem';
 import s from './BeerPageContent.module.scss';
 
@@ -9,7 +10,13 @@ interface BeerPageContentProps {
 const BeerPageContent: FC<BeerPageContentProps> = ({ beer }) => (
   <div className={s.root}>
     <div className={s.image}>
-      <img src={beer.image_url ?? '/assets/img/no-image-placeholder.jpg'} alt="Beer" />
+      <Image
+        src={beer.image_url ?? '/assets/img/no-image-placeholder.jpg'}
+        alt="Beer"
+        width={381}
+        height={760}
+        objectFit="contain"
+      />
     </div>
     <div className={s.info}>
       <div className={s.info__header}>
