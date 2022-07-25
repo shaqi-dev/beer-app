@@ -4,6 +4,7 @@ import PaginatedBeerList from '../components/PaginatedBeerList';
 import MainContainer from '../components/MainContainer';
 import getAllBeers from '../service/getAllBeers';
 import BeerItem from '../models/BeerItem';
+import BeerSearchInput from '../components/BeerSearchInput';
 
 interface IndexProps {
   data: BeerItem[]
@@ -11,6 +12,7 @@ interface IndexProps {
 
 const Page: FC<IndexProps> = ({ data }) => (
   <MainContainer>
+    <BeerSearchInput />
     <PaginatedBeerList data={data} />
   </MainContainer>
 );

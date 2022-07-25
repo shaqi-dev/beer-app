@@ -24,7 +24,7 @@ const MainContainer: FC<PropsWithChildren<MainContainerProps>> = (props) => {
             <h1 className={s.logo}>Beer App</h1>
           </Link>
         </header>
-        <main>
+        <main className={s.main}>
           {children}
         </main>
       </div>
