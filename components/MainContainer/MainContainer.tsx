@@ -20,7 +20,7 @@ const MainContainer: FC<PropsWithChildren<MainContainerProps>> = (props) => {
       </Head>
       <div className={s.root}>
         <header className={s.header}>
-          <Link href="/pages/1">
+          <Link href="/">
             <h1 className={s.logo}>Beer App</h1>
           </Link>
         </header>

@@ -1,24 +1,19 @@
 import React, { FC, useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import BeerList from '../BeerList';
-import getAllBeers from '../../service/getAllBeers';
 import BeerItem from '../../models/BeerItem';
 import s from './PaginatedBeerList.module.scss';
 
-const PaginatedLists: FC = () => {
+interface PaginatedBeerListProps {
+  data: BeerItem[]
+}
+
+const PaginatedBeerList: FC<PaginatedBeerListProps> = ({ data }) => {
   const [currentPage, setCurrentPage] = useState('0');
-  const [allData, setAllData] = useState<null | BeerItem[]>(null);
   const [currentData, setCurrentData] = useState<null | BeerItem[]>(null);
   const beersPerPage = 12;
-  const beersTotal = allData?.length;
+  const beersTotal = data.length;
   const pagesTotal = Math.ceil((beersTotal || 0) / beersPerPage);
-
-  useEffect(() => {
-    (async () => {
-      const { data } = await (await getAllBeers())();
-      setAllData(data);
-    })();
-  }, []);
 
   useEffect(() => {
     const start = Number(currentPage) * beersPerPage;
@@ -26,10 +21,10 @@ const PaginatedLists: FC = () => {
     if (beersTotal && end > beersTotal) {
       end = beersTotal;
     }
-    const data = allData?.slice(start, end) || null;
+    const current = data.slice(start, end) || null;
 
-    setCurrentData(data);
-  }, [currentPage, allData]);
+    setCurrentData(current);
+  }, [currentPage, data]);
 
   const handlePageClick = (selectedItem: { selected: number }) => {
     const { selected } = selectedItem;
@@ -58,4 +53,4 @@ const PaginatedLists: FC = () => {
   );
 };
 
-export default PaginatedLists;
+export default PaginatedBeerList;
