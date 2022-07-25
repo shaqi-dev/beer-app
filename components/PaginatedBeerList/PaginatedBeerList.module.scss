@@ -1,0 +1,67 @@
+@use '../../scss/variables' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.paginator {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+
+  &__page-link {
+    display: block;
+    width: 48px;
+    height: 48px;
+    line-height: 2.6;
+    text-align: center;
+    background: $color-dark-primary;
+    color: $color-light-primary;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 100ms;
+
+    &:hover:not(&--active) {
+      background: $color-dark-hover;
+    }
+
+    &--active {
+      background: $color-dark-accent;
+    }
+  }
+
+  &__previous-link, &__next-link {
+    display: block;
+    width: 48px;
+    height: 48px;
+    line-height: 2.6;
+    text-align: center;
+    background: $color-dark-primary;
+    color: $color-light-primary;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 100ms;
+
+    &:hover {
+      background: $color-dark-hover;
+    }
+  }
+
+  &__break-link {
+    display: block;
+    font-size: 3.2rem;
+    cursor: pointer;
+    color: $color-dark-primary;
+    transition: all 100ms;
+
+    &:hover {
+      transform: translateY(-2px);
+      color: $color-dark-hover;
+    }
+  }
+}

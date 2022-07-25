@@ -13,7 +13,7 @@ const formatDescription = (str: string): string => (
 );
 
 const BeerCard: FC<BeerItemProps> = ({ beer }) => (
-  <div key={beer.id} className={s.root}>
+  <div className={s.root}>
     <div className={s.image}>
       <img src={beer.image_url} alt="Beer" />
     </div>
