@@ -5,15 +5,20 @@ import BeerItem from '../../models/BeerItem';
 import s from './PaginatedBeerList.module.scss';
 
 interface PaginatedBeerListProps {
-  data: BeerItem[]
+  data: BeerItem[] | null
 }
 
 const PaginatedBeerList: FC<PaginatedBeerListProps> = ({ data }) => {
   const [currentPage, setCurrentPage] = useState('0');
+  const [allData, setAllData] = useState<null | BeerItem[]>(null);
   const [currentData, setCurrentData] = useState<null | BeerItem[]>(null);
   const beersPerPage = 12;
-  const beersTotal = data.length;
+  const beersTotal = data?.length;
   const pagesTotal = Math.ceil((beersTotal || 0) / beersPerPage);
+
+  useEffect(() => {
+    setAllData(data);
+  }, []);
 
   useEffect(() => {
     const start = Number(currentPage) * beersPerPage;
@@ -21,10 +26,10 @@ const PaginatedBeerList: FC<PaginatedBeerListProps> = ({ data }) => {
     if (beersTotal && end > beersTotal) {
       end = beersTotal;
     }
-    const current = data.slice(start, end) || null;
 
+    const current = allData?.slice(start, end) || null;
     setCurrentData(current);
-  }, [currentPage, data]);
+  }, [currentPage, allData]);
 
   const handlePageClick = (selectedItem: { selected: number }) => {
     const { selected } = selectedItem;

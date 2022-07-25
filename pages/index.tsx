@@ -18,8 +18,6 @@ const Page: FC<IndexProps> = ({ data }) => (
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await (await getAllBeers())();
 
-  console.log(data);
-
   return {
     props: {
       data,
