@@ -15,7 +15,7 @@ const formatDescription = (str: string): string => (
 const BeerCard: FC<BeerItemProps> = ({ beer }) => (
   <div className={s.root}>
     <div className={s.image}>
-      <img src={beer.image_url} alt="Beer" />
+      <img src={beer.image_url ?? '/assets/img/no-image-placeholder.jpg'} alt="Beer" />
     </div>
     <div className={s.body}>
       <h2 className={s.name}>{beer.name}</h2>
