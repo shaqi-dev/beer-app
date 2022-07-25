@@ -3,9 +3,10 @@ import API_BASE from '../constants/api';
 import BeerItem from '../models/BeerItem';
 
 interface GetBeersPageParams {
-  page: number
+  page?: number
   per_page?: number
   beer_name?: string
+  id?: string
 }
 
 const getBeersPage = async (

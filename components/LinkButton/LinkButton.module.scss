@@ -1,0 +1,16 @@
+@use '../../scss/variables' as *;
+
+.root {
+  width: fit-content;
+  text-decoration: none;
+  color: $color-light-primary;
+  background-color: $color-dark-primary;
+  padding: 10px 15px;
+  border-radius: 9px;
+  transition: all 100ms;
+
+  &:hover {
+    color: $color-light-hover;
+    background-color: $color-dark-hover;  
+  }
+}

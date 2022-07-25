@@ -1,12 +1,13 @@
 @use '../../scss/variables' as *;
  
 .root {
+  min-height: 100vh;
   max-width: 1260px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 40px;
+  justify-content: flex-start;
+  gap: 80px;
 }
 
 .header {
@@ -29,4 +30,5 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
+  flex-grow: 1;
 }

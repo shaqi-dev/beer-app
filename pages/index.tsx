@@ -27,8 +27,6 @@ const Page: FC<IndexProps> = ({ data }) => {
         };
         const { data: resData } = await (await getAllBeers(params))();
 
-        console.log(resData);
-
         if (resData && resData.length > 0) {
           setSearchData(resData);
         } else {
