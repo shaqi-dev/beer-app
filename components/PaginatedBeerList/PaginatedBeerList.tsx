@@ -6,19 +6,25 @@ import s from './PaginatedBeerList.module.scss';
 
 interface PaginatedBeerListProps {
   data: BeerItem[] | null
+  search: BeerItem[] | null
 }
 
-const PaginatedBeerList: FC<PaginatedBeerListProps> = ({ data }) => {
+const PaginatedBeerList: FC<PaginatedBeerListProps> = ({ data, search }) => {
   const [currentPage, setCurrentPage] = useState('0');
   const [allData, setAllData] = useState<null | BeerItem[]>(null);
+  const [searchData, setSearchData] = useState<null | BeerItem[]>(null);
   const [currentData, setCurrentData] = useState<null | BeerItem[]>(null);
   const beersPerPage = 12;
-  const beersTotal = data?.length;
+  const beersTotal = searchData ? searchData.length : data?.length;
   const pagesTotal = Math.ceil((beersTotal || 0) / beersPerPage);
 
   useEffect(() => {
     setAllData(data);
-  }, []);
+  }, [data]);
+
+  useEffect(() => {
+    setSearchData(search);
+  }, [search]);
 
   useEffect(() => {
     const start = Number(currentPage) * beersPerPage;
@@ -27,9 +33,10 @@ const PaginatedBeerList: FC<PaginatedBeerListProps> = ({ data }) => {
       end = beersTotal;
     }
 
-    const current = allData?.slice(start, end) || null;
-    setCurrentData(current);
-  }, [currentPage, allData]);
+    const current = searchData ? searchData.slice(start, end) : allData?.slice(start, end);
+
+    setCurrentData(current || null);
+  }, [currentPage, allData, searchData]);
 
   const handlePageClick = (selectedItem: { selected: number }) => {
     const { selected } = selectedItem;

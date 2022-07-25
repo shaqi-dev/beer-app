@@ -1,25 +1,35 @@
-import getBeersByPage from './getBeersByPage';
+import getBeersPage from './getBeersPage';
 import BeerItem from '../models/BeerItem';
 
-export interface AllBeersReturnType {
+export interface GetAllBeersReturnType {
   totalBeers: number,
   totalPages: number,
   data: BeerItem[],
 }
 
-const getAllBeers = async () => {
+interface GetAllBeersParams {
+  beer_name?: string
+}
+
+const getAllBeers = async (params: GetAllBeersParams = {}) => {
   let result: BeerItem[] = [];
-  let currentPage = 1;
-  return async function getPart(): Promise<AllBeersReturnType> {
-    const { data } = await getBeersByPage(currentPage.toString());
+  const perPage = 80;
+  let page = 1;
+  return async function getPart(): Promise<GetAllBeersReturnType> {
+    const currentParams = {
+      page,
+      per_page: perPage,
+      ...params,
+    };
+    const { data } = await getBeersPage(currentParams);
     result = [...result, ...data];
-    if (data.length === 20) {
-      currentPage += 1;
+    if (data.length === perPage) {
+      page += 1;
       return getPart();
     }
     return {
       totalBeers: result.length,
-      totalPages: currentPage,
+      totalPages: page,
       data: result,
     };
   };

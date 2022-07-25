@@ -1,22 +1,20 @@
 import React, { ChangeEvent, FC } from 'react';
 import s from './BeerSearchInput.module.scss';
 
-const BeerSearchInput: FC = () => {
-  const searchHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const input = e.target as HTMLInputElement;
-    console.log(input.value);
-  };
+interface BeerSearchInputProps {
+  // eslint-disable-next-line no-unused-vars
+  searchHandler: (e: ChangeEvent<HTMLInputElement>) => void;
+}
 
-  return (
-    <div className={s.root}>
-      <input
-        type="search"
-        placeholder="Search"
-        onChange={searchHandler}
-        className={s.input}
-      />
-    </div>
-  );
-};
+const BeerSearchInput: FC<BeerSearchInputProps> = ({ searchHandler }) => (
+  <div className={s.root}>
+    <input
+      type="search"
+      placeholder="Search"
+      onChange={searchHandler}
+      className={s.input}
+    />
+  </div>
+);
 
 export default BeerSearchInput;
