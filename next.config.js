@@ -7,4 +7,6 @@ module.exports = {
     path: '',
     domains: ['images.punkapi.com'],
   },
+  basePath: '/beer-app',
+  assetPrefix: '/beer-app',
 };
